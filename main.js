@@ -33,7 +33,7 @@ const sleep = (ms = 0) => new Promise(r => setTimeout(r, ms));
                 await page.goto(href, { waitUntil: 'networkidle2', timeout: 0 });
                 const html = await page.content();
                 const itemID = href.split('/item/')[1];
-                const fileName = itemID.replace('.', `${(new Date()).valueOf()}-${Math.floor(10000000 * Math.random())}.`);
+                const fileName = itemID.replace('.', `-${(new Date()).valueOf()}-${Math.floor(10000000 * Math.random())}.`);
                 await fs.writeFile(path.join(__dirname, 'pages', fileName), html, (err) => {
                     if (err) console.log(err);
                 });
